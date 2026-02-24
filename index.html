@@ -1,0 +1,693 @@
+<!DOCTYPE html><html lang="en"><head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+ </head>
+ <body>
+  <!-- Obfuscated at 2025-12-07 17:34:31 on https://t.me/LegendVai91 (Powered By Mr.BaBlU) -->
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>
+   TG Boy VĪP
+  </title>
+  <link href="https://fonts.googleapis.com" rel="preconnect">
+  <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
+  <style>
+   body, html {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        overflow: hidden;
+        font-family: 'Arial', sans-serif;
+    }
+
+    iframe {
+        width: 100%;
+        height: 100%;
+        border: none;
+    }
+
+    #predictionBox {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        background: rgba(10, 10, 25, 0.85);
+        backdrop-filter: blur(15px);
+        -webkit-backdrop-filter: blur(15px);
+        
+        padding: 15px 18px;
+        border-radius: 15px;
+        color: #fff;
+        font-size: 15px;
+        font-weight: bold;
+        width: 190px;
+        text-align: center;
+        border: 1px solid rgba(0, 255, 255, 0.5); /* Cyan Border */
+        box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.4), 
+                    0 0 20px rgba(0, 255, 255, 0.2), /* Cyan Glow */
+                    inset 0 0 10px rgba(0, 255, 255, 0.05);
+        z-index: 99999;
+        cursor: grab;
+        user-select: none;
+        transition: all 0.5s ease;
+        font-family: 'Orbitron', sans-serif;
+    }
+    
+    #vipTitle {
+        font-size: 16px;
+        font-weight: 900;
+        margin-bottom: 8px;
+        color: #ffffff; /* White Title */
+        text-shadow: 0 0 8px #00ffff, 0 0 12px #00ffff; /* Cyan Glow */
+        letter-spacing: 1px;
+        animation: pulse 2.5s infinite;
+    }
+
+    @keyframes pulse {
+        0%, 100% { opacity: 1; transform: scale(1); }
+        50% { opacity: 0.8; transform: scale(1.02); }
+    }
+
+    #bsText {
+        font-size: 30px;
+        font-weight: 700;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        transition: color 0.8s ease, text-shadow 0.8s ease, filter 0.8s ease;
+        filter: drop-shadow(0 0 10px currentColor);
+        animation: flicker 3s infinite alternate;
+        margin-bottom: 8px;
+    }
+
+    @keyframes flicker {
+        0%, 18%, 22%, 25%, 53%, 57%, 100% { opacity: 1; }
+        20%, 24%, 55% { opacity: 0.8; }
+    }
+
+    .bd-time, .timer { 
+        font-size: 12px;
+        color: #00ffff; /* Cyan Time/Timer */
+        opacity: 0.9; 
+        font-weight: 700;
+        text-shadow: 0 0 4px #00ffff;
+    }
+    
+    .bd-time {
+        margin-top: 0;
+    }
+
+    .timer {
+        margin-top: 4px;
+    }
+
+    #loginForm input {
+        width: 90%;
+        padding: 8px;
+        border-radius: 8px;
+        border: 1px solid rgba(0, 255, 255, 0.5); /* Cyan Border */
+        margin-bottom: 10px;
+        text-align: center;
+        background: rgba(255, 255, 255, 0.1);
+        color: #fff;
+        font-family: 'Orbitron', sans-serif;
+        transition: all 0.3s ease;
+        box-sizing: border-box;
+    }
+    
+    #loginForm input:focus {
+        outline: none;
+        border-color: #00ffff;
+        box-shadow: 0 0 8px rgba(0, 255, 255, 0.5);
+    }
+
+    #loginForm button {
+        width: 90%;
+        padding: 8px;
+        border-radius: 8px;
+        border: none;
+        background: linear-gradient(45deg, #00ffff, #0080ff); /* Cyan Gradient */
+        color: #0a0a0a;
+        font-weight: bold;
+        cursor: pointer;
+        font-family: 'Orbitron', sans-serif;
+        font-weight: 700;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 12px 0 rgba(0, 255, 255, 0.4);
+        box-sizing: border-box;
+    }
+    
+    #loginForm button:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 15px 0 rgba(0, 255, 255, 0.6);
+    }
+
+    #toast {
+        position: fixed;
+        bottom: 100px;
+        left: 50%;
+        transform: translateX(-50%);
+        background: rgba(10, 10, 25, 0.9);
+        color: #fff;
+        padding: 12px 24px;
+        border-radius: 10px;
+        border: 1px solid rgba(0, 255, 255, 0.4);
+        box-shadow: 0 0 20px rgba(0, 255, 255, 0.5);
+        font-weight: bold;
+        display: none;
+        z-index: 100000;
+        opacity: 0.95;
+        font-family: 'Orbitron', sans-serif;
+        backdrop-filter: blur(5px);
+    }
+
+    #toast.success { background: linear-gradient(45deg, #00ffff, #00ff7f); color: #000; }
+    #toast.error { background: linear-gradient(45deg, #ff007f, #ff4500); color: #fff; }
+    
+    .loading-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(10, 10, 25, 0.9);
+        border-radius: 15px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 10;
+        backdrop-filter: blur(2px);
+    }
+    
+    .loading-spinner {
+        width: 35px;
+        height: 35px;
+        border: 3px solid rgba(0, 255, 255, 0.2); /* Cyan Spinner */
+        border-top: 3px solid #00ffff;
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
+    }
+    
+    @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+  </style>
+  <iframe src="https://tkclub9.com/#/register?invitationCode=71818104996">
+  </iframe>
+  <div id="predictionBox">
+   <div id="loginForm">
+    <input id="passwordInput" placeholder="Enter Password" type="password">
+    <br>
+    <button id="loginBtn">
+     Login
+    </button>
+   </div>
+   <div id="predictionUI" style="display:none;">
+    <div id="vipTitle">
+     TG Boy VĪP
+    </div>
+    <div id="bsText">
+     BIG
+    </div>
+    <div class="bd-time" id="bdTime">
+     --:--:--
+    </div>
+    <div class="timer" id="timer">
+     Next: 00:00
+    </div>
+    <div class="loading-overlay" id="loadingOverlay" style="display: none;">
+     <div class="loading-spinner">
+     </div>
+    </div>
+   </div>
+  </div>
+  <div id="toast">
+  </div>
+  <script>
+   /* ================= GLOBAL STATE ================= */
+let currentPrediction = "BIG";
+let currentColor = { color: '#00ffff', shadow: '0 0 20px #00ffff' }; // Default color is now cyan
+let timerInterval;
+let lastSecond = -1;
+
+/* ================= COLOR PALETTES (Updated for a new beautiful look) ================= */
+const bigColors = [
+    { color: '#00ffff', shadow: '0 0 20px #00ffff' }, // Cyan
+    { color: '#00bfff', shadow: '0 0 20px #00bfff' }, // Deep Sky Blue
+    { color: '#39ff14', shadow: '0 0 20px #39ff14' }, // Neon Green
+    { color: '#bf00ff', shadow: '0 0 20px #bf00ff' }, // Violet
+    { color: '#ffffff', shadow: '0 0 20px #ffffff' }  // White
+];
+
+const smallColors = [
+    { color: '#ff00ff', shadow: '0 0 20px #ff00ff' }, // Magenta
+    { color: '#ff4500', shadow: '0 0 20px #ff4500' }, // Orange Red
+    { color: '#ffd700', shadow: '0 0 20px #ffd700' }, // Gold
+    { color: '#ff69b4', shadow: '0 0 20px #ff69b4' }, // Hot Pink
+    { color: '#00ff7f', shadow: '0 0 20px #00ff7f' }  // Spring Green
+];
+
+/* ================= PREDICTION GENERATOR ================= */
+function generatePrediction() {
+    const isBig = Math.random() < 0.5;
+    const prediction = isBig ? "BIG" : "SMALL";
+    
+    const palette = isBig ? bigColors : smallColors;
+    const color = palette[Math.floor(Math.random() * palette.length)];
+    
+    return { prediction, color };
+}
+
+/* ================== BANGLADESH TIME FORMATTER ================== */
+function getBDTime() {
+    const now = new Date();
+    const utc = now.getTime() + (now.getTimezoneOffset() * 60000);
+    const bdTime = new Date(utc + (6 * 3600000)); // 6 hours offset for BST
+
+    const hours = String(bdTime.getHours()).padStart(2, '0');
+    const minutes = String(bdTime.getMinutes()).padStart(2, '0');
+    const seconds = String(bdTime.getSeconds()).padStart(2, '0');
+
+    return `${hours}:${minutes}:${seconds}`;
+}
+
+/* ================== INITIALIZATION ================== */
+function initializePrediction() {
+    showLoadingAnimation(true);
+    
+    const { prediction, color } = generatePrediction();
+    currentPrediction = prediction;
+    currentColor = color;
+
+    updateUI();
+    showToast("System Initialized!", "success");
+    showLoadingAnimation(false);
+}
+
+/* ================== UI UPDATES ================== */
+function updateUI() {
+    const bsElement = document.getElementById("bsText");
+    bsElement.innerText = currentPrediction;
+    bsElement.style.color = currentColor.color;
+    bsElement.style.textShadow = currentColor.shadow;
+}
+
+function showLoadingAnimation(show) {
+    document.getElementById("loadingOverlay").style.display = show ? "flex" : "none";
+}
+
+/* ================== TIMER AND CYCLE LOGIC ================== */
+function updateTimer() {
+    // Update Bangladesh Time
+    document.getElementById("bdTime").innerText = getBDTime();
+
+    // Update Market Timer
+    const now = new Date();
+    const utc = now.getTime() + (now.getTimezoneOffset() * 60000);
+    const bdTime = new Date(utc + (6 * 3600000));
+    
+    const seconds = bdTime.getSeconds();
+    const remainingSeconds = 30 - (seconds % 30);
+    document.getElementById("timer").innerText = `Next: 00:${String(remainingSeconds).padStart(2,'0')}`;
+
+    // Check for new period to change prediction
+    if (seconds % 30 === 0 && seconds !== lastSecond) {
+        lastSecond = seconds;
+        showLoadingAnimation(true);
+        
+        const { prediction, color } = generatePrediction();
+        currentPrediction = prediction;
+        currentColor = color;
+        
+        updateUI();
+        
+        setTimeout(() => {
+            showLoadingAnimation(false);
+        }, 800);
+    } else if (seconds !== lastSecond) {
+        lastSecond = seconds;
+    }
+}
+
+/* ================== TOAST ================== */
+function showToast(message, type) {
+    const toast = document.getElementById("toast");
+    toast.innerText = message;
+    toast.className = type;
+    toast.style.display = "block";
+    setTimeout(() => toast.style.display = "none", 3000);
+}
+
+/* ================== LOGIN ================== */
+const loginBtn = document.getElementById("loginBtn");
+const passwordInput = document.getElementById("passwordInput");
+const loginForm = document.getElementById("loginForm");
+const predictionUI = document.getElementById("predictionUI");
+const predictionBox = document.getElementById("predictionBox");
+
+loginBtn.addEventListener("click", async () => {
+    if(passwordInput.value === "@#"){
+        showToast("Login Successful!", "success");
+        loginForm.style.display = "none";
+        predictionUI.style.display = "block";
+
+        initializePrediction();
+
+        if (timerInterval) clearInterval(timerInterval);
+        timerInterval = setInterval(updateTimer, 200);
+
+    } else {
+        // Show error message
+        showToast("Invalid Password!", "error");
+        passwordInput.value = "";
+        
+        // Redirect to Telegram channel after a short delay
+        setTimeout(() => {
+            window.location.href = "https://t.me/tkclubhack1";
+        }, 1000);
+    }
+});
+
+/* ================== DRAGGABLE BOX ================== */
+let drag = false, dx = 0, dy = 0;
+
+predictionBox.addEventListener("mousedown", e => {
+    drag = true;
+    dx = e.clientX - predictionBox.offsetLeft;
+    dy = e.clientY - predictionBox.offsetTop;
+});
+document.addEventListener("mousemove", e => {
+    if (!drag) return;
+    predictionBox.style.left = e.clientX - dx + "px";
+    predictionBox.style.top = e.clientY - dy + "px";
+    predictionBox.style.bottom = "auto";
+    predictionBox.style.right = "auto";
+});
+document.addEventListener("mouseup", () => drag = false);
+
+predictionBox.addEventListener("touchstart", e => {
+    drag = true;
+    let t = e.touches[0];
+    dx = t.clientX - predictionBox.offsetLeft;
+    dy = t.clientY - predictionBox.offsetTop;
+});
+document.addEventListener("touchmove", e => {
+    if (!drag) return;
+    let t = e.touches[0];
+    predictionBox.style.left = t.clientX - dx + "px";
+    predictionBox.style.top = t.clientY - dy + "px";
+    predictionBox.style.bottom = "auto";
+    predictionBox.style.right = "auto";
+});
+document.addEventListener("touchend", () => drag = false);
+  </script>
+ 
+
+</body></html>you sure?")) await updateDoc(doc(db, col, id), { status: s });
+    };
+
+    window.approveAddMoney = async (id, amount, userId) => {
+        if(!confirm("পেমেন্ট কি পেয়েছেন? ব্যালেন্স যোগ হবে।")) return;
+        const userRef = doc(db, "users", userId);
+        const userSnap = await getDoc(userRef);
+        const currentBal = userSnap.exists() ? (userSnap.data().balance || 0) : 0;
+        await updateDoc(userRef, { balance: currentBal + amount });
+        await updateDoc(doc(db, "addMoneyRequests", id), { status: "Accepted" });
+        alert("Balance Added!");
+    };
+
+    async function loadSettings() {
+        const snap = await getDoc(doc(db, "siteSettings", "general"));
+        if (snap.exists()) {
+            document.getElementById('notice-input').value = snap.data().notice;
+        }
+        const banSnap = await getDoc(doc(db, "siteSettings", "banners"));
+        if(banSnap.exists()) {
+            document.getElementById('banner-input').value = banSnap.data().urls.join(', ');
+        }
+    }
+    loadSettings();
+
+    document.getElementById('updateGeneral').onclick = async () => {
+        const banners = document.getElementById('banner-input').value.split(',').map(l => l.trim()).filter(l => l !== "");
+        await setDoc(doc(db, "siteSettings", "general"), {
+            notice: document.getElementById('notice-input').value
+        }, { merge: true });
+        await setDoc(doc(db, "siteSettings", "banners"), { urls: banners });
+        alert("Updated!");
+    };
+
+    document.getElementById('addOfferBtn').onclick = async () => {
+        const title = document.getElementById('pTitle').value;
+        const imageUrl = document.getElementById('pImg').value;
+        const variantsRaw = document.getElementById('pVariants').value;
+        const category = document.getElementById('pCat').value;
+        if(title && imageUrl && variantsRaw) {
+            const variants = variantsRaw.split(',').map(i => {
+                const parts = i.split('=');
+                return { name: parts[0].trim(), price: parseInt(parts[1].trim()) };
+            });
+            await addDoc(collection(db, "offers"), { title, imageUrl, category, variants, timestamp: Date.now() });
+            alert("প্রোডাক্ট যোগ হয়েছে!");
+        }
+    };
+
+    onSnapshot(collection(db, "offers"), (snapshot) => {
+        const container = document.getElementById('admin-list-container');
+        container.innerHTML = "";
+        snapshot.forEach((item) => {
+            container.innerHTML += `<div class="list-item"><span>${item.data().title}</span><button onclick="delItem('${item.id}')" style="width:auto; background:red; color:white; padding:5px 10px; border-radius:5px;">Delete</button></div>`;
+        });
+    });
+
+    window.delItem = async (id) => { if(confirm("Delete Product?")) await deleteDoc(doc(db, "offers", id)); };
+</script>
+</body>
+</html>
+id="player-id" class="uid-input" placeholder="প্লেয়ার আইডি দিন">
+                <div class="package-grid" id="dynamic-package-list"></div>
+                <button class="buy-now-btn" onclick="showPaymentOptions()">BUY NOW</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="payment-modal" onclick="closeModal()">
+        <div class="modal-content" onclick="event.stopPropagation()">
+            <h3 style="text-align: center; color:#003d82">পেমেন্ট মেথড</h3><br>
+            <div class="payment-modal-grid">
+                <div class="pay-option" onclick="openManualPay('bkash', '#d81b60', '01633043717', 'ORDER')"><img src="https://i.postimg.cc/0j3Hf1VK/Screenshot-20260215-085236-Telegram.jpg"><br>BKash</div>
+                <div class="pay-option" onclick="openManualPay('nagad', '#f7941d', '01633043717', 'ORDER')"><img src="https://i.postimg.cc/8cqtvBCK/Screenshot-20260215-085236-Telegram.jpg"><br>Nagad</div>
+                <div class="pay-option" onclick="openManualPay('rocket', '#8c3494', '01633043717', 'ORDER')"><img src="https://i.postimg.cc/w38QMqWb/Screenshot-20260215-085236-Telegram.jpg"><br>Rocket</div>
+                <div class="pay-option" onclick="processWallet()"><img src="https://i.postimg.cc/3xYBmwBq/20260216-000856.jpg"><br>Wallet</div>
+            </div>
+        </div>
+    </div>
+
+    <div id="add-money-page">
+        <div class="buy-container">
+            <div class="product-header"><span class="back-btn" onclick="showHome()">⬅</span><img src="https://i.postimg.cc/3xYBmwBq/20260216-000856.jpg" style="width:70px; height:70px;"><h2>Add Wallet Balance</h2></div>
+            <div class="input-section">
+                <label>টাকার পরিমাণ (Amount)</label><input type="number" id="add-amount" class="uid-input" placeholder="Amount">
+                <div class="method-grid">
+                    <div class="method-item" onclick="selectAddMethod(this, 'bkash', '#d81b60')"><img src="https://i.postimg.cc/0j3Hf1VK/Screenshot-20260215-085236-Telegram.jpg"><span>BKash</span></div>
+                    <div class="method-item" onclick="selectAddMethod(this, 'nagad', '#f7941d')"><img src="https://i.postimg.cc/8cqtvBCK/Screenshot-20260215-085236-Telegram.jpg"><span>Nagad</span></div>
+                    <div class="method-item" onclick="selectAddMethod(this, 'rocket', '#8c3494')"><img src="https://i.postimg.cc/w38QMqWb/Screenshot-20260215-085236-Telegram.jpg"><span>Rocket</span></div>
+                </div><br>
+                <button class="buy-now-btn" onclick="goToAddPayment()">NEXT STEP</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="manual-payment-page" style="padding: 10px;">
+        <div class="checkout-header"><span onclick="showHome()" style="cursor:pointer">✕</span><span>Payable: ৳ <span id="display-price">0</span></span></div>
+        <div id="payment-card-ui" class="payment-card">
+            <h3>ট্রানজেকশন আইডি দিন</h3>
+            <div class="tr-id-box"><input type="text" id="tr-id-input" placeholder="TrxID Here"></div>
+                <ul class="instruction-list">
+                <li>1. *247# ডায়াল করে আপনার <b class="method-name-txt">bKash</b> মোবাইল মেনুতে যান অথবা <b class="method-name-txt">bKash</b> অ্যাপে যান।</li>
+                <li><b>2. "Send Money"</b> -এ ক্লিক করুন।</li>
+                <li>3. প্রাপক নম্বর হিসেবে এই নম্বরটি লিখুনঃ <b id="target-number">01633043717</b> 
+                    <button class="copy-btn" onclick="copyNumber()">Copy</button>
+                </li>
+                <li>4. টাকার পরিমাণঃ <b class="display-price-inner">0</b></li>
+                <li>5. নিশ্চিত করতে এখন আপনার <b class="method-name-txt">bKash</b> মোবাইল মেনু পিন লিখুন।</li>
+                <li>6. সবকিছু ঠিক থাকলে, আপনি <b class="method-name-txt">bKash</b> থেকে একটি নিশ্চিতকরণ বার্তা পাবেন।</li>
+                <li>7. এখন উপরের বক্সে আপনার <b>Transaction ID</b> দিন এবং নিচের <b>VERIFY</b> বাটনে ক্লিক করুন।</li>
+            </ul>
+        </div>
+        <button class="verify-btn" onclick="handleVerification()">VERIFY</button>
+    </div>
+
+    <div class="bottom-nav">
+        <div class="nav-item" onclick="showHome()"><span>🏠</span><br>Home</div>
+        <div class="nav-item" onclick="showAddMoney()"><span>💸</span><br>Add Money</div>
+        <div class="nav-item" onclick="showOrders()"><span>📦</span><br>Orders</div>
+        <div class="nav-item" onclick="showProfile()"><span>👤</span><br>Profile</div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+<script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+    import { getFirestore, collection, onSnapshot, doc, updateDoc, setDoc, getDoc, addDoc, serverTimestamp, query, orderBy } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+    import { getAuth, signInWithPopup, GoogleAuthProvider, onAuthStateChanged, signOut, signInWithEmailAndPassword, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
+
+    const firebaseConfig = {
+        apiKey: "AIzaSyDnNHFl9NbiTSGXCa_FE9J8Ow8z-8QBADY",
+        authDomain: "tg-top-up-e51ad.firebaseapp.com",
+        projectId: "tg-top-up-e51ad",
+        storageBucket: "tg-top-up-e51ad.firebasestorage.app",
+        messagingSenderId: "244840251995",
+        appId: "1:244840251995:web:7bd6bb91cb12b82244357e"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const db = getFirestore(app);
+    const auth = getAuth(app);
+    const provider = new GoogleAuthProvider();
+
+    let currentUser = null;
+    let selectedPrice = 0, selectedDiamond = "", currentMethod = "", paymentMode = "ORDER", tempAddMethod = "", tempAddColor = "";
+
+    onAuthStateChanged(auth, async (user) => {
+        currentUser = user;
+        if (user) {
+            document.getElementById('auth-container').style.display = "none";
+            document.getElementById('user-info-container').style.display = "block";
+            document.getElementById('user-name').innerText = user.displayName || "User Account";
+            document.getElementById('user-email-txt').innerText = user.email;
+            if(user.photoURL) document.getElementById('user-photo').innerHTML = `<img src="${user.photoURL}" style="width:100%; height:100%; border-radius:50%; object-fit:cover;">`;
+            
+            const userRef = doc(db, "users", user.uid);
+            onSnapshot(userRef, (snap) => {
+                const bal = snap.exists() ? snap.data().balance : 0;
+                document.getElementById('balance').innerText = bal;
+                document.getElementById('profile-balance').innerText = bal;
+                if(!snap.exists()) setDoc(userRef, { balance: 0, email: user.email });
+            });
+        } else {
+            document.getElementById('auth-container').style.display = "block";
+            document.getElementById('user-info-container').style.display = "none";
+        }
+    });
+
+    window.handleAuth = async () => {
+        const email = document.getElementById('login-email').value, pass = document.getElementById('login-password').value;
+        if(!email || !pass) return alert("ইমেইল ও পাসওয়ার্ড দিন");
+        try { await signInWithEmailAndPassword(auth, email, pass); } catch { try { await createUserWithEmailAndPassword(auth, email, pass); } catch { alert("Error!"); } }
+    };
+    window.loginWithGoogle = () => signInWithPopup(auth, provider);
+    window.logout = () => signOut(auth).then(() => location.reload());
+
+    window.loadOrders = () => {
+        if(!currentUser) return;
+        const list = document.getElementById('order-history-list');
+        const q = query(collection(db, "orders"), orderBy("timestamp", "desc"));
+        onSnapshot(q, (snapshot) => {
+            list.innerHTML = "";
+            let count = 0;
+            snapshot.forEach(d => {
+                const data = d.data();
+                if(data.userId === currentUser.uid) {
+                    count++;
+                    const item = document.createElement('div');
+                    item.className = 'order-item';
+                    item.innerHTML = `<h4>${data.game} - ${data.item}</h4><p>ID: ${data.player_id} | Price: ${data.price}৳</p><span class="status-badge ${data.status === 'Pending' ? 'status-pending' : 'status-completed'}">${data.status}</span>`;
+                    list.appendChild(item);
+                }
+            });
+            document.getElementById('total-orders').innerText = count;
+            if(count === 0) list.innerHTML = '<p style="text-align:center;padding:20px;">কোন অর্ডার নেই</p>';
+        });
+    };
+
+    // ব্যানার স্লাইডার লজিক
+    onSnapshot(doc(db, "siteSettings", "banners"), (snap) => {
+        if(snap.exists()){
+            const urls = snap.data().urls || [];
+            const wrapper = document.getElementById('banner-slider');
+            wrapper.innerHTML = "";
+            urls.forEach(url => {
+                wrapper.innerHTML += `<div class="swiper-slide"><img src="${url}"></div>`;
+            });
+            new Swiper('.swiper', {
+                loop: true,
+                autoplay: { delay: 3000 },
+                pagination: { el: '.swiper-pagination', clickable: true },
+            });
+        }
+    });
+
+    onSnapshot(doc(db, "siteSettings", "general"), (d) => { if(d.exists()){ document.getElementById('notice-text').innerText = d.data().notice; } });
+    
+    onSnapshot(collection(db, "offers"), (snapshot) => {
+        const sg = document.getElementById('special-grid'), fg = document.getElementById('ff-grid');
+        sg.innerHTML = ""; fg.innerHTML = "";
+        snapshot.forEach(d => {
+            const item = d.data();
+            const card = document.createElement('div'); card.className = 'product-card';
+            card.innerHTML = `<img src="${item.imageUrl}"><p>${item.title}</p>`;
+            card.onclick = () => {
+                hideAll(); document.getElementById('buy-page').style.display = 'block';
+                document.getElementById('buy-title').innerText = item.title;
+                document.getElementById('buy-img').src = item.imageUrl;
+                const pkgBox = document.getElementById('dynamic-package-list'); pkgBox.innerHTML = "";
+                item.variants.forEach(v => {
+                    const dv = document.createElement('div'); dv.className = 'package-item';
+                    dv.innerHTML = `<b>${v.name}</b><br>৳${v.price}`;
+                    dv.onclick = () => { document.querySelectorAll('.package-item').forEach(i => i.classList.remove('active')); dv.classList.add('active'); selectedPrice = v.price; selectedDiamond = v.name; };
+                    pkgBox.appendChild(dv);
+                });
+            };
+            if(item.category === "special") sg.appendChild(card); else fg.appendChild(card);
+        });
+    });
+
+    window.handleVerification = async () => {
+        const trx = document.getElementById('tr-id-input').value.trim();
+        if(!trx || !currentUser) return alert("TrxID দিন!");
+        if(paymentMode === "ORDER") {
+            await addDoc(collection(db, "orders"), { userId: currentUser.uid, userEmail: currentUser.email, player_id: document.getElementById('player-id').value, item: selectedDiamond, game: document.getElementById('buy-title').innerText, price: parseInt(selectedPrice), method: currentMethod, trx_id: trx, status: "Pending", timestamp: serverTimestamp() });
+        } else {
+            await addDoc(collection(db, "addMoneyRequests"), { userId: currentUser.uid, userEmail: currentUser.email, amount: parseInt(selectedPrice), trx_id: trx, method: currentMethod, status: "Pending", timestamp: serverTimestamp() });
+        }
+        alert("Submitted!"); showOrders();
+    };
+
+    window.processWallet = async () => {
+        const bal = parseInt(document.getElementById('balance').innerText);
+        if(bal < selectedPrice) return alert("ব্যালেন্স নেই!");
+        if(confirm("Confirm?")) {
+            await updateDoc(doc(db, "users", currentUser.uid), { balance: bal - selectedPrice });
+            await addDoc(collection(db, "orders"), { userId: currentUser.uid, userEmail: currentUser.email, player_id: document.getElementById('player-id').value, item: selectedDiamond, game: document.getElementById('buy-title').innerText, price: parseInt(selectedPrice), method: "Wallet", status: "Pending", timestamp: serverTimestamp() });
+            alert("সফল!"); showOrders();
+        }
+    };
+
+    window.showHome = () => { hideAll(); document.getElementById('home-page').style.display = 'block'; };
+    window.showAddMoney = () => { if(!currentUser) return showProfile(); hideAll(); document.getElementById('add-money-page').style.display = 'block'; };
+    window.showOrders = () => { if(!currentUser) return showProfile(); hideAll(); document.getElementById('orders-page').style.display = 'block'; loadOrders(); };
+    window.showProfile = () => { hideAll(); document.getElementById('profile-page').style.display = 'block'; };
+    
+    function hideAll() { 
+        ['home-page', 'buy-page', 'manual-payment-page', 'add-money-page', 'orders-page', 'profile-page', 'payment-modal'].forEach(id => { 
+            if(document.getElementById(id)) document.getElementById(id).style.display = 'none'; 
+        }); 
+    }
+
+    window.selectAddMethod = (el, m, c) => { document.querySelectorAll('.method-item').forEach(i => i.classList.remove('active')); el.classList.add('active'); tempAddMethod = m; tempAddColor = c; };
+    window.goToAddPayment = () => { selectedPrice = document.getElementById('add-amount').value; if(!selectedPrice) return alert("Amount দিন"); openManualPay(tempAddMethod, tempAddColor, '01633043717', 'ADD_MONEY'); };
+    
+    window.openManualPay = (m, c, n, mode) => { 
+        closeModal(); hideAll(); paymentMode = mode; currentMethod = m.toUpperCase(); 
+        document.getElementById('payment-card-ui').style.backgroundColor = c; 
+        document.querySelectorAll('.method-name-txt').forEach(el => el.innerText = currentMethod); 
+        document.getElementById('target-number').innerText = n; 
+        document.getElementById('display-price').innerText = selectedPrice; 
+        document.querySelectorAll('.display-price-inner').forEach(el => el.innerText = selectedPrice); 
+        document.getElementById('manual-payment-page').style.display = 'block'; 
+    };
+
+    window.showPaymentOptions = () => { if(!currentUser) return showProfile(); if(!document.getElementById('player-id').value) return alert("UID দিন!"); if(selectedPrice === 0) return alert("প্যাকেজ সিলেক্ট করুন!"); document.getElementById('payment-modal').style.display = 'flex'; };
+    window.closeModal = () => document.getElementById('payment-modal').style.display = 'none';
+    window.copyNumber = () => { navigator.clipboard.writeText(document.getElementById('target-number').innerText); alert("কপি হয়েছে!"); };
+</script>
+</body>
+</html>
